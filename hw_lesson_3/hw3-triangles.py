@@ -1,16 +1,16 @@
-def return_triangle(type, width):
-    pre_str = '*' * width if type <= 2 else ' ' * width
-    post_str = '*' * width if type > 2 else ' ' * width
+def return_triangle(tr_type, width):
+    star_str = '*' * width
+    space_str = ' ' * width
     counter = 0
     while width > 0:
-        if type == 1:
-            print(pre_str[0:width])
-        elif type == 2:
-            print(pre_str[0:counter + 1])
-        elif type == 3:
-            print(pre_str[0:counter] + post_str[0:width])
+        if tr_type == 1:
+            print(star_str[0:width])
+        elif tr_type == 2:
+            print(star_str[0:counter + 1])
+        elif tr_type == 3:
+            print(space_str[0:counter] + star_str[0:width])
         else:
-            print(pre_str[0:width - 1] + post_str[0: counter + 1])
+            print(space_str[0:width - 1] + star_str[0: counter + 1])
         width -= 1
         counter += 1
 
