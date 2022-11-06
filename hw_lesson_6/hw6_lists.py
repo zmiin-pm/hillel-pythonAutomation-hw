@@ -53,7 +53,7 @@ print(f'Reversed list:', list_of_N)
 """
 list_of_five_to_compare = user_input(5, int, 'Input 5 numbers: ')
 list_more_than_5 = [x for x in list_of_five_to_compare if x > 5]
-print(list_more_than_5)
+print(f'List of numbers which are more than "5" is {list_more_than_5}')
 
 """Задание 6:
 Запросить у пользователя число N
