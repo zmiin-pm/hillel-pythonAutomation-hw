@@ -82,9 +82,7 @@ def top_of_words(path):
     with open(path) as f:
         text = f.read()
         words = re.findall(r'[a-zA-Z]+', text)
-        counter = collections.Counter(words)
-        list_of_tuples = sorted(counter.items(), key=lambda item: item[1], reverse=True)
-        return list_of_tuples[:5]
+        return collections.Counter(words).most_common(5)
 
 
 print(find_nums_in_file.__doc__)
