@@ -1,4 +1,4 @@
-def is_power_of_two(num: int, power=1, counter=0):
+def is_power_of_two(num: int, power: int = 1, counter: int = 0) -> str:
     if power > num:
         return 'no'
     if power == num:
