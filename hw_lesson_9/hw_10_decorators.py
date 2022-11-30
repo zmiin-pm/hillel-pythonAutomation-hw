@@ -5,22 +5,26 @@ def call_times(file_name):
             with open(file_name, 'w') as f:
                 f.write(f'{func.__name__} была вызвана {wrapper.count} раз(а).\n')
             return func()
+
         wrapper.count = 0
         return wrapper
+
     return decorator
 
 
 @call_times('foo.txt')
 def foo():
-  pass
+    pass
+
 
 @call_times('boo.txt')
 def boo():
-  pass
+    pass
+
 
 @call_times('calls.txt')
 def doo():
-  pass
+    pass
 
 
 foo()
