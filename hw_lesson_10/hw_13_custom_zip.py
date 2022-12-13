@@ -9,17 +9,19 @@ default=None - если full=True, вместо недостающих элем�
 
 
 def custom_zip(*sequences: Iterable, full=False, default=None) -> List[Tuple]:
+    iner_seq = list(map(lambda x: x.copy(), sequences))
     if full:
-        index = len(max(sequences, key=len))
-        for sequence in sequences:
+        index = len(max(iner_seq, key=len))
+        for sequence in iner_seq:
             while len(sequence) < index:
                 sequence.append(default)
     else:
-        index = len(min(sequences, key=len))
-    return [tuple(map(lambda sequence: sequence[i], sequences)) for i in range(index)]
+        index = len(min(iner_seq, key=len))
+    return [tuple(map(lambda sequence: sequence[i], iner_seq)) for i in range(index)]
 
 
 seq1 = [1, 2, 3, 4, 5]
 seq2 = [9, 8, 7]
 assert custom_zip(seq1, seq2) == [(1, 9), (2, 8), (3, 7)]
-assert custom_zip(seq1, seq2, full=True, default="Q") == [(1, 9), (2, 8), (3, 7), (4, 'Q'), (5, 'Q')]
+assert custom_zip(seq1, seq2, full=True) == [(1, 9), (2, 8), (3, 7), (4, None), (5, None)]
+assert custom_zip(seq1, seq2) == [(1, 9), (2, 8), (3, 7)]
