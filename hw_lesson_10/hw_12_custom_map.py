@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Iterable, Callable, List
 
 def custom_map(function: Callable, *iterables: Iterable) -> List:
@@ -6,10 +7,11 @@ def custom_map(function: Callable, *iterables: Iterable) -> List:
     Если переданные итерируемые объекты разной длины, то результат сформировать по кратчайшему итерируемому объекту.
     custom_map(sum, [1, 2, 3], [3, 5, 0, 5]) -> [4, 7, 3]
     """
-    iterables = iterables[0] if len(iterables) == 1 else zip(*iterables)
-    if type(iterables) == zip:
-        return [function(*iterable) for iterable in iterables]
-    return [function(iterable) for iterable in iterables]
+    inner_iterables = deepcopy(iterables)
+    inner_iterables = inner_iterables[0] if len(inner_iterables) == 1 else zip(*inner_iterables)
+    if type(inner_iterables) == zip:
+        return [function(*iterable) for iterable in inner_iterables]
+    return [function(iterable) for iterable in inner_iterables]
 
 
 sum2 = lambda x, y: x + y
