@@ -1,5 +1,5 @@
-from company import *
-from employee import *
+from company import Company
+from employee import Employee
 
 new_company = Company('Some Comp', 3)
 employee_john = Employee('John', 40)

@@ -1,35 +1,37 @@
+from employee import Employee
+
 
 class Company:
 
     main_company_address = '7675 Albany St. Brooklyn, NY 11201'
 
-    def __init__(self, company_name: str, vacations_number: int):
+    def __init__(self, company_name: str, vacancies_number: int):
         self.company_name = company_name
-        self.vacations_number = vacations_number
+        self.vacancies_number = vacancies_number
         self.employees_list = []
 
-    def add_employee(self, employee: object):
+    def add_employee(self, employee: Employee):
         """
         Add employee to the company
         :param employee: instance of Employee
         :return: instance of Company with added employee
         """
-        if self.vacations_number > 0:
+        if self.vacancies_number > 0:
             self.employees_list.append(employee)
-            self.vacations_number -= 1
+            self.vacancies_number -= 1
             return self
-        raise Exception(f'No free vacations')
+        raise Exception(f'No free vacancies')
 
     def view_company_info(self):
         """
         Print company info
-        :return: null
+        :return: None
         """
         print('_______________________________________________')
         print(f'Company name: {self.company_name}')
         print(f'Main company address: {self.main_company_address}')
         print(f'Employees: {len(self.employees_list)}')
-        print(f'Free vacations: {self.vacations_number}')
+        print(f'Free vacancies: {self.vacancies_number}')
         print('_______________________________________________')
 
     @classmethod

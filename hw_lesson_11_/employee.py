@@ -47,8 +47,7 @@ class Employee:
         :return: None
         """
         folder = 'employees'
-        if not os.path.exists(folder):
-            os.makedirs(folder)
+        os.makedirs(folder, exist_ok=True)
         for employee in employees:
             file_name = f'{employee.employee_id}_{employee.name}.txt'
             with open('./'+folder+'/'+file_name, 'w') as f:
